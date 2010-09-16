@@ -22,6 +22,7 @@ import tkFont
 import urllib2
 import base64
 
+#TODO: Test in Ubuntu, Windows and OSX
 class CWGUI:
     '''
     Draws the GUI and initiates the core components of the program.
@@ -149,7 +150,7 @@ class CWPROCESS:
         '''
         Arguments:
         process_name -- The name of the process as the OS sees it
-#TODO:write docstrings ffs
+        #TODO:write proper docstrings
         '''
         self.process_name = process_name
         self.up_limit = up_limit
@@ -182,10 +183,15 @@ class CWPROCESS:
         self.status = "KIA"
 
     def revive(self):
+        '''
+        Starts processes that has earlier been killed by this script and
+        is eligble to be started again.
+        '''
         if self.values.os == "OSX":
             os.system("/Applications/" + self.process_name + ".app" +
                 "/Contents/MacOS/" + self.process_name + " &")
-
+        #TODO: Investigate revive hang on OSX
+        #TODO: Switch to use of subprocess module
         if self.values.os == "linux":
             os.system(self.process_name + " &")
 
@@ -315,7 +321,7 @@ class CWPARSER:
 
         for i in range (0, 4):
             #This code is very old, and I cant bother to make it look better ;)
-    
+            #TODO: This is horrible, switch to regex 
             index_tx = unsearched_tx.find("tx_total")
             index_rx = unsearched_rx.find("rx_total")
             if (i != 3):
