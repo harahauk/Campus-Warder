@@ -3,10 +3,10 @@
 '''
 Created on 1. jan. 2010
 
-This script is created with the purpose of handling bandwidth issues with
-certain programs. The main problem being that the IT department of a 
-certain university disconnects their user's Internet connection if they 
-exceed the 10gb/24h traffic limit. 
+This script is created with the purpose of handling bandwidth issues 
+with certain programs. The main problem being that the landlord of a 
+certain university campus village disconnect their user's Internet 
+connection if they exceed the 10gb/24h traffic limit. 
 
 @author: Harald Hauknes <harald (att) hauknes (dot) org>
 
@@ -23,6 +23,9 @@ import urllib2
 import base64
 
 #TODO: Test in Ubuntu, Windows and OSX
+#TODO: GUI for configuring cw.cfg
+#TODO: Write README
+#TODO: Add pokemon error handling?
 class CWGUI:
     '''
     Draws the GUI and initiates the core components of the program.
