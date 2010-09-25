@@ -1,0 +1,10 @@
+This script is created with the purpose of handling bandwidth issues
+with certain programs. The main problem being that the landlord of a
+certain university campus village disconnect their user's Internet
+connection if they exceed the 10gb/24h traffic limit.
+
+@author: Harald Hauknes <harald (att) hauknes (dot) org>
+
+Written for Python 2.6 with PIL
+
+#TODO: This documentation is a stub
