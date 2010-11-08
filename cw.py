@@ -170,8 +170,8 @@ class CWPROCESS:
             #This status is updated from the update status loop
             return
 
-
         elif self.status == 'KIA':
+            #TODO: Test this
             if (self.up_limit > self.values.parser.up) or (self.down_limit >
                 self.values.parser.down):
                 self.revive()
@@ -182,6 +182,9 @@ class CWPROCESS:
                 self.kill()
 
     def kill(self):
+        '''
+        Kills the process using the OS own kill command
+        '''
         os.system(self.values.kill_command + " " + self.process_name)
         self.status = "KIA"
 
@@ -194,6 +197,7 @@ class CWPROCESS:
             os.system("/Applications/" + self.process_name + ".app" +
                 "/Contents/MacOS/" + self.process_name + " &")
         #TODO: Investigate revive hang on OSX
+        #TODO: Test on all OSes
         #TODO: Switch to use of subprocess module
         if self.values.os == "linux":
             os.system(self.process_name + " &")
@@ -260,8 +264,11 @@ class CONFIG:
     def get_bandwidth(self):
         self.parser.parse()
         while ((self.parser.up == -1) or (self.parser.down == -1)):
+            # If we for some reason cannot parse the values
+            # we wait a second and see if we can
             self.parser.parse()
             time.sleep(1)
+            #TODO: Inform user if this goes on too long
 
         return (self.parser.up, self.parser.down)
 
@@ -365,8 +372,8 @@ class CWPARSER:
         
         # Display the value in megabytes
         try:
-            self.up = int(tx_value)/(1024*1000)
-            self.down = int(rx_value)/(1024*1000)
+            self.up = int(tx_value)/(1024*1024)
+            self.down = int(rx_value)/(1024*1024)
         # Sometimes the value is parsed incorrectly,
         # if so - ignore it - this script is meant to be looped
         except ValueError:
