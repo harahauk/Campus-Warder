@@ -365,8 +365,8 @@ class CWPARSER:
         
         # Display the value in megabytes
         try:
-            self.up = int(tx_value)/(1024*1024)
-            self.down = int(rx_value)/(1024*1024)
+            self.up = int(tx_value)/(1024*1000)
+            self.down = int(rx_value)/(1024*1000)
         # Sometimes the value is parsed incorrectly,
         # if so - ignore it - this script is meant to be looped
         except ValueError:
