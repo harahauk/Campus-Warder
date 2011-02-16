@@ -8,3 +8,8 @@ connection if they exceed the 10gb/24h traffic limit.
 Written for Python 2.6 with PIL
 
 #TODO: This documentation is a stub
+
+Installation instruction for Mac OSX
+Copy Campus-Warder.app to /Applications - do not rename it
+edit cw.cfg and copy it to /Applications/Campus-Warder.app/Contents/Resources
+
